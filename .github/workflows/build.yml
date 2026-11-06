@@ -18,7 +18,8 @@ jobs:
           gradle-version: 8.7
       - run: |
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
-      - run: unzip -q Jarvis-Complete.zip
+      - run: |
+          unzip -qo "$(ls Jarvis-*.zip | sort -V | tail -n 1)"
       - run: gradle assembleDebug --no-daemon
         working-directory: Jarvis
       - run: |
